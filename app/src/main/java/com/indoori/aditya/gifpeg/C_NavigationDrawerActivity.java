@@ -330,6 +330,11 @@ public class C_NavigationDrawerActivity extends AppCompatActivity
         /*if (id == R.id.action_settings) {
             return true;
         }*/
+        if (id == R.id.action_logout){
+            Intent intent = new Intent(getApplicationContext(),B_LoginActivity.class);
+            finish();
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }

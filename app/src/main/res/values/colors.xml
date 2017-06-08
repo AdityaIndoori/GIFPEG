@@ -13,5 +13,5 @@
     <color name="TransparentBlack">#90000000</color>
     <color name="Transparent">#00000000</color>
     <color name="Grey">#616161</color>
-
+    <color name="Favourite">#FF4081</color>
 </resources>

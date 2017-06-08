@@ -63,16 +63,20 @@ public class E_GifFragmentViewPager extends Fragment implements GifRecyclerViewA
             R.drawable.cgif,
             R.drawable.dgif,
             R.drawable.egif,
-            R.drawable.fgif};
+            R.drawable.fgif,
+            R.drawable.hgif
+    };
     String subtitleArray[] = {
             "impressive!",
             "Such Swag! Thug Life!",
             "Like A BOSS!!",
             "Great Jobb!",
             "O-M-G!! WOWOWW!!",
-            "Greaat HOLY!!"};
+            "Greaat HOLY!!",
+            "Edava Sodi.."
+    };
     private View rootView;
-    private FloatingActionButton floatingActionButton;
+    private FloatingActionButton floatingActionButton,floatingActionButtonFavourite;
     private RecyclerView recyclerView;
 
     public E_GifFragmentViewPager() {
@@ -115,6 +119,7 @@ public class E_GifFragmentViewPager extends Fragment implements GifRecyclerViewA
         rootView =  inflater.inflate(R.layout.fragment_gif_fragment_view_pager, container, false);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView_gif);
         floatingActionButton = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+        floatingActionButtonFavourite = (FloatingActionButton) getActivity().findViewById(R.id.fab_favourite);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2, LinearLayoutManager.VERTICAL,false);//2 = number of columns
         recyclerView.setLayoutManager(gridLayoutManager);
         if (mParam2.equals("Trending")) {
@@ -190,7 +195,7 @@ public class E_GifFragmentViewPager extends Fragment implements GifRecyclerViewA
         thumbView.getGlobalVisibleRect(startBounds);
         rootView.findViewById(R.id.gif_container).getGlobalVisibleRect(finalBounds, globalOffset);
         startBounds.offset(-globalOffset.x, -globalOffset.y);
-        finalBounds.offset(-globalOffset.x+16, -globalOffset.y);
+        finalBounds.offset(-globalOffset.x+16, -globalOffset.y-48);
 
         // Adjust the start bounds to be the same aspect ratio as the final bounds using the
         // "center crop" technique. This prevents undesirable stretching during the animation.
@@ -252,6 +257,7 @@ public class E_GifFragmentViewPager extends Fragment implements GifRecyclerViewA
 
         //Floating Action Button:
         floatingActionButton.setVisibility(View.VISIBLE);
+        floatingActionButtonFavourite.setVisibility(View.VISIBLE);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -273,6 +279,7 @@ public class E_GifFragmentViewPager extends Fragment implements GifRecyclerViewA
                 // Animate the four positioning/sizing properties in parallel, back to their
                 // original values.
                 floatingActionButton.setVisibility(View.GONE);
+                floatingActionButtonFavourite.setVisibility(View.GONE);
                 recyclerView.setAlpha(1f);
                 rootView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorBackground));
 
